@@ -1,0 +1,50 @@
+<!-- src/app/board/board.component.html -->
+<div class="board-container">
+  <div class="player-info">
+    <h2 *ngIf="!winner">Turn: {{ getCurrentPlayer().name }}</h2>
+    <h1 *ngIf="winner">{{ winner.name }} won!</h1>
+    <div class="player-position" *ngIf="!winner">
+      <h2>
+        {{ player1.name }} Current Cell:
+        {{ player1.currCell }}
+      </h2>
+      <h2>
+        {{ player2.name }} Current Cell:
+        {{ player2.currCell }}
+      </h2>
+    </div>
+    <div *ngIf="!winner && startGame">
+        <h2>Player {{prevPlayer}} rolled {{currentRoll}}</h2>
+    </div>
+    <div *ngIf="winner && startGame">
+        <h2>Player {{currentPlayer}} rolled {{currentRoll}}</h2>
+    </div>
+    <button (click)="rollDice()" *ngIf="!winner">Roll Dice</button>
+  </div>
+  <div class="board-table-container">
+    <img
+      src="assets/SnakesAndLadders.jpg"
+      alt="Snake and Ladder Board"
+      class="board-image"
+    />
+    <div class="board-table">
+      <ng-container *ngFor="let row of cells">
+        <!-- [ngClass] Binding: [ngClass] is an Angular binding that dynamically sets the CSS classes based on the conditions specified in the curly braces {}. -->
+        <!-- We are adding multiple coditional classes within [ngClass]-->
+        <div
+          *ngFor="let cell of row"
+          class="board-cell"
+          [ngClass]="{
+            highlighted: isCellHighlighted(cell),
+            player1: player1.currCell === cell,
+            player2: player2.currCell === cell
+          }"
+        >
+          <div class="circle">
+            {{ getPlayerNumberForCell(cell) }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

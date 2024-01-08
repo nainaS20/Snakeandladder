@@ -1,0 +1,113 @@
+/* src/app/board/board.component.scss */
+.player-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(150, 156, 145);
+  margin-bottom: 20px;
+  padding: 20px;
+
+  .player-position{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.board-table-container {
+  position: relative;
+  z-index: 1; /* Ensure the board-table is on top of the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* src/app/board/board.component.scss */
+.board-image {
+  width: 60%;
+  height: auto;
+  object-fit: cover;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 50;
+  z-index: 0; /* Ensure the image is in front of the board-table */
+}
+
+.board-table {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 2px;
+  position: absolute;
+  top: 0;
+  left: 50;
+  z-index: 1; /* Ensure the board-table is behind the image */
+  background-color: transparent; /* Make the entire grid transparent */
+}
+
+.board-cell {
+ // border: 2px solid red;
+  position: relative; /* Set position to relative for player circles */
+  text-align: center;
+  font-weight: bold;
+  background-color: transparent; /* Transparent background for all cells */
+  height: 16px;
+  width: 16px;
+  padding: 55.8px;
+
+  .circle {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.highlighted {
+  .circle {
+    background-color: rgba(93, 182, 211, 0.7); /* Adjust the color and alpha for highlighted cells */
+    z-index: 2; /* Ensure highlighted circles are above the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.player1 .circle {
+  background-color: black; /* Adjust the color for player 1 */
+  color: whitesmoke;
+}
+
+.player2 .circle {
+  background-color: whitesmoke; /* Adjust the color for player 2 */
+  color: black;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: lightblue; /* Green */
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: blue; /* Darker Green on hover */
+    color: whitesmoke;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background-color: #3e8e41; /* Even darker Green when button is pressed */
+  }
+}

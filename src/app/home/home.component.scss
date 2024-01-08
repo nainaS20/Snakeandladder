@@ -1,0 +1,31 @@
+// src/app/home/home.component.scss
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .game-box {
+    padding: 20px;
+    background-color: #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+    text-align: center;
+  
+    .play-game-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: lawngreen; 
+      color: #ffffff; 
+      border: none;
+      border-radius: 5px; 
+      cursor: pointer;
+  
+      &:hover {
+        background-color: green; 
+      }
+    }
+  }
+  
